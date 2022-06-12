@@ -28,8 +28,8 @@ variable "policy_arn" {
   description = "List of policies to attach to OIDC role"
   type        = map(string)
   default     = {
-    arn1 = "arn:aws:iam::aws:policy/AutoScalingFullAccess",
-    arn2 = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+    arn-1 = "arn:aws:iam::aws:policy/AutoScalingFullAccess",
+    arn-2 = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
     }
   }
 
