@@ -27,11 +27,11 @@ variable "tags" {
 variable "policy_arn" {
   description = "List of policies to attach to OIDC role"
   type        = map(string)
-  default     = {
+  default = {
     arn-1 = "arn:aws:iam::aws:policy/AutoScalingFullAccess",
     arn-2 = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-    }
   }
+}
 
 #for_each = toset([data.aws_iam_policy.AutoScalingFullAccess.arn, data.aws_iam_policy.EKSClusterPolicy.arn,data.aws_iam_policy.SystemAdministrator.arn,
 #data.aws_iam_policy.AWSMigrationHubFullAccess.arn,data.aws_iam_policy.EAmazonSSMFullAccess.arn,data.aws_iam_policy.AWSSupportAccess.arn,

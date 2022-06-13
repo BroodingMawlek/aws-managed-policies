@@ -9,25 +9,7 @@ resource "aws_iam_role" "test_role" {
   name = var.policy_role
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-        {
-            Effect = "Allow",
-            Principal = {
-                Federated = "arn:aws:iam::927527504075:oidc-provider/token.actions.githubusercontent.com"
-            },
-            Action = "sts:AssumeRoleWithWebIdentity",
-            Condition = {
-                StringLike = {
-                    "token.actions.githubusercontent.com:sub": "repo:",
-                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-                }
-            }
-        }
-    ]
-})
-
+  assume_role_policy = data.aws_iam_policy_document.oidc_trust
 }
 
 
